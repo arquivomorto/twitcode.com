@@ -12,7 +12,6 @@ class DB extends Utils{
 		$cfg=parent::cfg()['db'][$name];
 		switch ($name) {
 			case 'mysql':
-
 				$pdoDb = $cfg['db'];
 			        $pdoHost = $cfg['host'];
 			        $this->pdoPassword = $cfg['password'];
