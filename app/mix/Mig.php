@@ -1,6 +1,8 @@
 <?php
 namespace app\Mix;
 
+use Pdo;
+
 class Mig
 {
     var $conn, $tableDirectory, $dbType;

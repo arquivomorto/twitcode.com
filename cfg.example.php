@@ -11,6 +11,8 @@ $db=[
 	]
 ];
 return [
-	'showErrors'=>true,
-	'db'=>$db
+	'db'=>$db,
+	'dbDefault'=>'mysql',
+	'root'=>__DIR__,
+	'showErrors'=>true
 ];

@@ -1,0 +1,11 @@
+id
+name
+email
+password
+confirmation_code
+token
+token_expiration
+status
+create_at
+deletad_at
+update_at
