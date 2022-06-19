@@ -1,5 +1,5 @@
 <?php
-namespace app\Mix;
+namespace app\mix;
 
 use Pdo;
 
