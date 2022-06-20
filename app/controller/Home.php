@@ -2,10 +2,13 @@
 
 namespace app\controller;
 
-class Home
+use app\mix\Utils;
+
+class Home extends Utils
 {
     public function index()
     {
-        print 'hello world';
+        $data=['title'=>'Twitcode'];
+        parent::view('home', $data);
     }
 }
