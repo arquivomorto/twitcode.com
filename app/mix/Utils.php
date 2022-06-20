@@ -59,7 +59,6 @@ class Utils
             return $out;
         }
     }
-
     public function showErrors($bool)
     {
         if ($bool) {
