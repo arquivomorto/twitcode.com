@@ -1,20 +1,23 @@
 <?php
+
 namespace app\mix;
 
 use Pdo;
 
 class Mig
 {
-    var $conn, $tableDirectory, $dbType;
+    public $conn;
+    public $tableDirectory;
+    public $dbType;
 
-    function __construct($conn, $tableDirectory, $dbType)
+    public function __construct($conn, $tableDirectory, $dbType)
     {
         $this->conn = $conn;
         $this->tableDirectory = $tableDirectory;
         $this->dbType = $dbType;
     }
 
-    function createColumn($columnName, $tableName)
+    public function createColumn($columnName, $tableName)
     {
         $tableColumns = $this->getTableColumns($tableName);
         if (in_array($columnName, $tableColumns)) {
@@ -44,18 +47,18 @@ class Mig
         }
     }
 
-    function createTable($tableName, $columnNames)
+    public function createTable($tableName, $columnNames)
     {
         $sql = 'CREATE TABLE IF NOT EXISTS `' . $tableName . '` (' . PHP_EOL;
         switch ($this->dbType) {
-            case 'mysql';
+            case 'mysql':
                 $sql = $sql;
                 $id = 'bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,' . PHP_EOL;
                 $id .= chr(9) . 'PRIMARY KEY (id)';
                 $text = 'LONGTEXT NULL';
                 $sufix = ' ENGINE=InnoDB;';
                 break;
-            case 'sqlite';
+            case 'sqlite':
                 $id = 'INTEGER PRIMARY KEY AUTOINCREMENT';
                 $text = 'TEXT';
                 $sufix = ';';
@@ -79,7 +82,7 @@ class Mig
         return $this->query($sql);
     }
 
-    function dropColumn($columnName, $tableName)
+    public function dropColumn($columnName, $tableName)
     {
         switch ($this->dbType) {
             case 'mysql':
@@ -104,13 +107,13 @@ class Mig
         }
     }
 
-    function dropTable($tableName)
+    public function dropTable($tableName)
     {
         $sql = 'DROP TABLE IF EXISTS `' . $tableName . '`;';
         return $this->query($sql);
     }
 
-    function getMigrations()
+    public function getMigrations()
     {
         $migrationsFiles = glob($this->tableDirectory . '/*');
         $migrations = [];
@@ -124,7 +127,7 @@ class Mig
         return $migrations;
     }
 
-    function getTableColumns($tableName)
+    public function getTableColumns($tableName)
     {
         switch ($this->dbType) {
             case 'mysql':
@@ -141,7 +144,7 @@ class Mig
         return $arr;
     }
 
-    function getTableList()
+    public function getTableList()
     {
         switch ($this->dbType) {
             case 'mysql':
@@ -157,7 +160,7 @@ class Mig
         return $arr;
     }
 
-    function getTables()
+    public function getTables()
     {
         $tableList = $this->getTableList();
         $tables = [];
@@ -167,12 +170,12 @@ class Mig
         return $tables;
     }
 
-    function query($sql)
+    public function query($sql)
     {
         return $this->conn->query($sql);
     }
 
-    function renameTable($oldTableName, $newTableName)
+    public function renameTable($oldTableName, $newTableName)
     {
         switch ($this->dbType) {
             case 'mysql':
@@ -185,7 +188,7 @@ class Mig
         return $this->query($sql);
     }
 
-    function run()
+    public function run()
     {
         $migrations = $this->getMigrations();
         $migrationsList = array_keys($migrations);

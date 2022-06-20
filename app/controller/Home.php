@@ -1,8 +1,11 @@
 <?php
+
 namespace app\controller;
 
-class Home{
-	function index(){
-		print 'hello world';
-	}
+class Home
+{
+    public function index()
+    {
+        print 'hello world';
+    }
 }

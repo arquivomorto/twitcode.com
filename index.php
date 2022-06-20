@@ -1,4 +1,5 @@
 <?php
+
 require 'vendor/autoload.php';
 $cfg=require 'cfg.php';
 
