@@ -1,8 +1,8 @@
 <?php
 
-namespace app\mix;
+namespace app\lib;
 
-use app\mix\Utils;
+use app\lib\Utils;
 
 use Pdo;
 use PDOException;

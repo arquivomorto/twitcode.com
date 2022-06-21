@@ -2,9 +2,9 @@
 
 require 'vendor/autoload.php';
 
-use app\mix\DB;
-use app\mix\Mig;
-use app\mix\Utils;
+use app\lib\DB;
+use app\lib\Mig;
+use app\lib\Utils;
 
 $utils=new Utils();
 $cfg=$utils->cfg();

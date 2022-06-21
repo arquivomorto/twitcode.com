@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-use app\mix\Utils;
+use app\lib\Utils;
 
 class Home extends Utils
 {

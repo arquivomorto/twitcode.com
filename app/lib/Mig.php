@@ -1,6 +1,6 @@
 <?php
 
-namespace app\mix;
+namespace app\lib;
 
 use Pdo;
 
