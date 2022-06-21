@@ -82,6 +82,7 @@ class Utils
         if (file_exists($filename)) {
             $data['data']=$data;
             extract($data);
+            require '__.php';
             if ($print) {
                 require $filename;
             } else {

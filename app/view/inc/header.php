@@ -10,6 +10,6 @@
             'css/1k.css'
         ]);
         ?>
-        <title><?php $e($title);?></title>
+        <title><?php __($title);?></title>
     </head>
     <body>
