@@ -25,7 +25,7 @@ class Utils
                     $url=$siteUrl.'/'.$url."?$md5";
                 }
                 if ($autoIndent and $key<>0) {
-                    print '    ';
+                    print '        ';
                 }
                 if ($ext=='css') {
                     print '<link rel="stylesheet" href="'.$url.'" />';
