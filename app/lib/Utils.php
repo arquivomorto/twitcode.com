@@ -59,6 +59,19 @@ class Utils
             return $out;
         }
     }
+    public function method($raw = false)
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($raw) {
+            return $method;
+        } else {
+            if ($method == 'POST') {
+                return 'POST';
+            } else {
+                return 'GET';
+            }
+        }
+    }
     public function showErrors($bool)
     {
         if ($bool) {
