@@ -10,11 +10,11 @@ $view('inc/header', $data);
     </div>
     <div class="row">
         <div class="col2"></div>
-        <div class="col5 text-center-mobile">
+        <div class="col4 text-center-mobile">
             <h1>Twitcode</h1>
-            <p>Compartilhe códigos com o mundo</p>
+            <p>Microblog para devs</p>
         </div>
-        <div class="col3 text-center">
+        <div class="col4 text-center">
             <form action="signin.php" method="post">
                 <label for="email"><?php __('Email');?></label><br>
                 <input type="email" id="email" name="email"><br>
