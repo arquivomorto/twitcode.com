@@ -9,5 +9,5 @@ use app\lib\Utils;
 $Utils=new Utils();
 $Utils->showErrors($cfg['showErrors']);
 
-$Home=new HomeController();
-$Home->index();
+$HomeController=new HomeController();
+$HomeController->index();
