@@ -7,7 +7,8 @@
         <?php
         $asset([
             'css/arimo/arimo.css',
-            'css/1k.css'
+            'css/1k.css',
+            'js/jquery-3.6.0.min.js'
         ]);
         ?>
         <title><?php __($title);?></title>
