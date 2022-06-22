@@ -72,6 +72,10 @@ class Utils
             }
         }
     }
+    public function redirect($url)
+    {
+        header('Location: '.$url);
+    }
     public function showErrors($bool)
     {
         if ($bool) {
