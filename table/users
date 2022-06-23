@@ -6,6 +6,6 @@ confirmation_code
 token
 token_expiration
 status
-create_at
+created_at
 deletad_at
 update_at

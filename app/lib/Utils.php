@@ -2,6 +2,8 @@
 
 namespace app\lib;
 
+use Medoo\Medoo;
+
 class Utils
 {
     public function asset($urls, $autoIndent = true)
@@ -46,6 +48,38 @@ class Utils
         } else {
             die('cp cfg.example.php cfg.php');
         }
+    }
+    public function db($dbName='')
+    {
+        $cfg=$this->cfg();
+        $dbDefault=$cfg['dbDefault'];
+        if (empty($dbName)) {
+            $dbCfg=$cfg['db'][$dbDefault];
+        } else {
+            $dbCfg=$cfg['db'][$dbName];
+        }
+        $opts=null;
+        switch ($dbDefault) {
+            case 'mysql':
+                $opts=[
+                    'type' => 'mysql',
+                    'host' => $dbCfg['host'],
+                    'database' => $dbCfg['db'],
+                    'username' => $dbCfg['user'],
+                    'password' => $dbCfg['password']
+                ];
+            break;
+            case 'sqlite':
+                $opts=[
+                    'type' => 'sqlite',
+                    'database' => $dbCfg['file']
+                ];
+            break;
+            default:
+                die('db not found');
+            break;
+        }
+        return new Medoo($opts);
     }
     public function e($str, $print=true)
     {

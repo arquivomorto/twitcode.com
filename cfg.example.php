@@ -8,12 +8,12 @@ $db=[
         'password'=>'senha1234'
     ],
     'sqlite'=>[
-        'file'=>__DIR__.'/dir/db.sqlite3'
+        'file'=>__DIR__.'/db/db.sqlite3'
     ]
 ];
 return [
     'db'=>$db,
-    'dbDefault'=>'mysql',
+    'dbDefault'=>'sqlite',
     'defaultLanguage'=>'en',
     'languages'=>'en,pt',    
     'root'=>__DIR__,

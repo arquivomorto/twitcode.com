@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-use app\model\User;
+use app\model\UserModel;
 use app\lib\Utils;
 
 class SignupController extends Utils
@@ -59,7 +59,7 @@ class SignupController extends Utils
     {
         $email=mb_strtolower($email);
         $UserModel=new UserModel();
-        $emailExists=$UserModel->userEmailExists($email);
+        $emailExists=$UserModel->emailExists($email);
         if (filter_var($email, FILTER_VALIDATE_EMAIL) and !$emailExists) {
             return $email;
         } else {

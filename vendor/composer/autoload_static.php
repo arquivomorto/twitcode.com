@@ -26,6 +26,10 @@ class ComposerStaticInit4526079440c85347d1da5f10aa7e7e49
             'Psr\\Cache\\' => 10,
             'PhpMyAdmin\\MoTranslator\\' => 24,
         ),
+        'M' => 
+        array (
+            'Medoo\\' => 6,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -68,6 +72,10 @@ class ComposerStaticInit4526079440c85347d1da5f10aa7e7e49
         'PhpMyAdmin\\MoTranslator\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmyadmin/motranslator/src',
+        ),
+        'Medoo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/catfan/medoo/src',
         ),
     );
 
