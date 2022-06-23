@@ -16,6 +16,7 @@ $view('inc/header', $data);
         </div>
         <div class="col4 text-center">
             <?php $view("form/signin");?>
+            <?php $view("form/signup");?>            
         </div>
     </div>
 </div>

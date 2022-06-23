@@ -26,11 +26,8 @@ hr{
 img{
 	max-width: 100%;
 }
-label,legend{
+label{
 	font-weight: bold;
-}
-legend{
-	font-size: 2em;
 }
 /* classes */
 .hide{
