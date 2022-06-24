@@ -1,4 +1,7 @@
 /* tags */
+a:hover{
+	text-decoration: none;
+}
 body{
 	color: #333333;
 	font-family:Arial,Arimo,sans-serif;
@@ -39,7 +42,7 @@ label{
 .text-center{
 	text-align: center;
 }
-/*apenas no desktop*/
+/*desktop*/
 @media ( min-width : 1300px) {
 	.container {
 		margin:0 auto;
@@ -111,6 +114,16 @@ label{
 	.row .col1 {
 		width: 6.3%;
 	}
+}
+@media (prefers-color-scheme: dark) {
+	a:link{
+		color: #ffffffd9;
+		font-weight:bold;
+	}
+    body {
+        background: #1c1c1c;
+		color: #ffffffd9;
+    }
 }
 /*mobile*/
 @media ( max-width : 1300px) {
