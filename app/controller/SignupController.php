@@ -2,8 +2,9 @@
 
 namespace app\controller;
 
-use app\model\UserModel;
+use app\controller\UserController;
 use app\lib\Utils;
+use app\model\UserModel;
 
 class SignupController extends Utils
 {
@@ -25,30 +26,20 @@ class SignupController extends Utils
         $password=$this->validPassword($password);
 
         if ($email and $name and $password) {
-            $user=[
-                'name'=>$name,
-                'email'=>$email,
-                'password'=>$password,
-                'status'=>'unconfirmed',
-                'created_at'=>time(),
-                'confirmation_code'=>parent::random()
-            ];
             // criar usuário
-            $UserModel=new UserModel();
-            $userId=$UserModel->create($user);
-            // enviar email de confirmação
-            // logar
-            $SigninController=new SigninController();
-            $SigninController->usingEmailAndPassword($email, $password);
-            // redirecionar pra tela de usuário
-            $url='/user.php?id='.$userId;
-            parent::redirect($url);
-        } else {
-            // mensagem de erro
-            $data=[
-                'error'=>$this->error
-            ];
-            parent::view('error', $data);
+            $UserController=new UserController();
+            $user=$UserController->create($email, $name, $password);
+            if ($user) {
+                // enviar email de confirmação
+                // logar
+                $SigninController=new SigninController();
+                $SigninController->usingEmailAndPassword($email, $password);
+                // redirecionar pra tela de usuário
+                $url='/user.php?id='.$user['id'];
+                parent::redirect($url);
+            } else {
+                $this->setError('unknownError');
+            }
         }
     }
     public function setError($msgCode)
@@ -88,10 +79,19 @@ class SignupController extends Utils
         $max=256;
         $len=mb_strlen($password);
         if ($len>=$min and $len<=$max) {
-            return password_hash($password, PASSWORD_DEFAULT);
+            return $password;
         } else {
             $this->setError('invalidPassword');
             return false;
+        }
+    }
+    public function __destruct()
+    {
+        if (count($this->error)>=1) {
+            $data=[
+                'error'=>$this->error
+            ];
+            parent::view('error', $data);
         }
     }
 }
