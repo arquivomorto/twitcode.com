@@ -20,6 +20,14 @@ class UserController extends Utils
         $UserModel=new UserModel();
         $userId=$UserModel->create($user);
         if (is_numeric($userId)) {
+            $username='user'.$userId;
+            $data=[
+                'username'=>$username
+            ];
+            $where=[
+                'id'=>$userId
+            ];
+            $UserModel->update($data,$where);
             $user['id']=$userId;
             return $user;
         } else {

@@ -44,7 +44,10 @@ label{
 }
 /* dark mode */
 @media (prefers-color-scheme: dark) {
-	a:link{
+	a:hover{
+		text-decoration: none;
+	}
+	a:link,a:hover{
 		color: #1d9bf0;
 	}
     body {

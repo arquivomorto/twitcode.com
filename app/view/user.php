@@ -1,5 +1,11 @@
 <?php
-$data['title']=$user['name'];
+if(!empty($user['username'])){
+    $title='@'.$user['username'].' ('.$user['name'].')';
+}else{
+    $title=$user['name'];
+}     
+
+$data['title']=$title;
 $view('inc/header', $data);
 ?>
 <script src="js/holder.min.js"></script>
@@ -51,7 +57,7 @@ $view('inc/header', $data);
             </p>
         </div>
         <div class="col7">
-            666 <?php __('mensagens no último ano');?><br>
+            123 <?php __('mensagens no último ano');?><br>
             <!-- <img alt="Contribuições" src="holder.js/967x200"> -->
 
             <!-- https://github.com/bachvtuan/Github-Contribution-Graph -->
@@ -86,6 +92,13 @@ $view('inc/header', $data);
         display: block;
         color: gray;
         font-size: 0.75em;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .profile a {
+            color: #1d9bf0;
+            text-decoration: underline;
+        }
     }
 
 </style>
@@ -127,7 +140,6 @@ $view('inc/header', $data);
 
     }
     $(function() {
-        document.title = "andercoutos (Anderson Coutos)";
         $('#github_chart_1').github_graph({
             //Generate random entries from 50-> 200 entries
             data: getRandomTimeStamps(50, 500, null, false),
