@@ -21,6 +21,10 @@ class UserModel extends Utils
         $where=[
             'email'=>$email
         ];
-        return $this->db->has('users', $where);
+        return $this->db->get('users', '*', $where);
+    }
+    public function update($data, $where)
+    {
+        return $this->db->update('users', $data, $where);
     }
 }
