@@ -17,6 +17,9 @@ $view('inc/header', $data);
                 print '<ul>';
                 foreach ($error as $value) {
                     switch ($value) {
+                        case '404':
+                            print '<li>'.__('Página não encontrada', false).'</li>';
+                        break;                            
                         case 'invalidName':
                             print '<li>'.__('Nome inválido', false).'</li>';
                         break;

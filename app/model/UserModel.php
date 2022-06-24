@@ -16,12 +16,12 @@ class UserModel extends Utils
         $result=$this->db->insert('users', $user);
         return $this->db->id();
     }
-    public function emailExists($email)
+    public function read($where, $cols=null)
     {
-        $where=[
-            'email'=>$email
-        ];
-        return $this->db->get('users', '*', $where);
+        if (is_null($cols)) {
+            $cols='*';
+        }
+        return $this->db->get('users', $cols, $where);
     }
     public function update($data, $where)
     {

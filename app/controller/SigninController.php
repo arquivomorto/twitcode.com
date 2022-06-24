@@ -18,7 +18,10 @@ class SigninController extends Utils
     {
         $UserModel=new UserModel();
         $email=mb_strtolower(trim($email));
-        $user=$UserModel->emailExists($email);
+        $where=[
+            'email'=>$email
+        ];
+        $user=$UserModel->read($where);
         $passwordOk=false;
         if ($user) {
             if (password_verify($password, $user['password'])) {
@@ -49,7 +52,8 @@ class SigninController extends Utils
                 setcookie('userToken', $token, $tokenExpiration)
             ) {
                 if (empty($url)) {
-                    $url='/user.php?id='.$user['id'];
+                    $cfg=parent::cfg();
+                    $url=$cfg['siteUrl'].'/user.php?id='.$user['id'];
                 }
                 parent::redirect($url);
             } else {

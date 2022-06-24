@@ -26,4 +26,37 @@ class UserController extends Utils
             return false;
         }
     }
+    public function get()
+    {
+        $userId=$_GET['id'];
+        $UserModel=new UserModel();
+        $where=[
+            'id'=>$userId
+        ];
+        $cols=[
+            'id',
+            'name',
+            'username',
+            'site',
+            'github',
+            'linkedin',
+            'instagram',
+            'twitter',
+            'bio'
+        ];
+        $user=$UserModel->read($where, $cols);
+        if ($user) {
+            $data=[
+                'user'=>$user
+            ];
+            parent::view('user', $data);
+        }else{
+            $data=[
+                'error'=>[
+                    '404'
+                ]
+            ];
+            parent::view('error', $data);
+        }
+    }
 }

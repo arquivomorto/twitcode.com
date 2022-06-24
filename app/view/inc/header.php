@@ -8,7 +8,10 @@
         $asset([
             'css/arimo/arimo.css',
             'css/1k.css',
-            'js/jquery-3.6.0.min.js'
+            'css/github_contribution_graph.css',      
+            'css/fork-awesome.min.css',
+            'js/jquery-3.6.0.min.js',
+            'js/github_contribution.js',
         ]);
         ?>
         <title><?php __($title);?></title>

@@ -33,8 +33,7 @@ class SignupController extends Utils
                 // enviar email de confirmação
                 // logar
                 $SigninController=new SigninController();
-                $url='/user.php?id='.$user['id'];
-                $SigninController->usingEmailAndPassword($email, $password, $url);
+                $SigninController->usingEmailAndPassword($email, $password);
             } else {
                 $this->setError('unknownError');
             }
@@ -48,7 +47,10 @@ class SignupController extends Utils
     {
         $email=mb_strtolower(trim($email));
         $UserModel=new UserModel();
-        $emailExists=$UserModel->emailExists($email);
+        $where=[
+            'email'=>$email
+        ];
+        $emailExists=$UserModel->read($where);
         if (filter_var($email, FILTER_VALIDATE_EMAIL) and !$emailExists) {
             return $email;
         } else {

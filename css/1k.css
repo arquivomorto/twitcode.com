@@ -42,6 +42,22 @@ label{
 .text-center{
 	text-align: center;
 }
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+	a:link{
+		color: #1d9bf0;
+	}
+    body {
+        background: #000000;
+		color: #ffffffd9;
+    }
+	small{
+		color:#63676c;
+	}
+	text{
+		fill:white;
+	}
+}
 /*desktop*/
 @media ( min-width : 1300px) {
 	.container {
@@ -114,16 +130,6 @@ label{
 	.row .col1 {
 		width: 6.3%;
 	}
-}
-@media (prefers-color-scheme: dark) {
-	a:link{
-		color: #ffffffd9;
-		font-weight:bold;
-	}
-    body {
-        background: #1c1c1c;
-		color: #ffffffd9;
-    }
 }
 /*mobile*/
 @media ( max-width : 1300px) {
