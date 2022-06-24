@@ -1,9 +1,12 @@
 <?php
-if(!empty($user['username'])){
+if (is_null($user['username'])) {
+    $user['username']=(string) $user['id'];
+}
+if (!empty($user['username'])) {
     $title='@'.$user['username'].' ('.$user['name'].')';
-}else{
+} else {
     $title=$user['name'];
-}     
+}
 
 $data['title']=$title;
 $view('inc/header', $data);
@@ -66,7 +69,13 @@ $view('inc/header', $data);
             </div>
         </div>
         <div class="col2">
-            sidebar
+            <?php if ($isAuth) {?>
+                <?php
+                $url=$siteUrl.'/logout.php?tokenExpiration='.$isAuth['token_expiration'];
+                ?>
+                <a href="<?php print $url;?>"><?php __('Sair');?></a>
+            <?php }
+            ?>
         </div>
     </div>
 </div>

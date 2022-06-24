@@ -20,14 +20,6 @@ class UserController extends Utils
         $UserModel=new UserModel();
         $userId=$UserModel->create($user);
         if (is_numeric($userId)) {
-            $username='user'.$userId;
-            $data=[
-                'username'=>$username
-            ];
-            $where=[
-                'id'=>$userId
-            ];
-            $UserModel->update($data,$where);
             $user['id']=$userId;
             return $user;
         } else {
@@ -54,11 +46,14 @@ class UserController extends Utils
         ];
         $user=$UserModel->read($where, $cols);
         if ($user) {
+            $cfg=parent::cfg();
             $data=[
-                'user'=>$user
+                'user'=>$user,
+                'isAuth'=>$this->isAuth(),
+                'siteUrl'=>$cfg['siteUrl']
             ];
             parent::view('user', $data);
-        }else{
+        } else {
             $data=[
                 'error'=>[
                     '404'
@@ -66,5 +61,54 @@ class UserController extends Utils
             ];
             parent::view('error', $data);
         }
+    }
+    public function isAuth()
+    {
+        $where['id']=@$_COOKIE['userId'];
+        $where['token']=@$_COOKIE['userToken'];
+        $where=['AND'=>$where];
+        $UserModel=new UserModel();
+        $cols=[
+            'id',
+            'name',
+            'username',
+            'token_expiration'
+        ];
+        $user=$UserModel->read($where, $cols);
+        if ($user) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
+    public function logout()
+    {
+        $tokenExpiration=$_GET['tokenExpiration'];
+        $where['id']=@$_COOKIE['userId'];
+        $where['token']=@$_COOKIE['userToken'];
+        $where['token_expiration']=$tokenExpiration;
+        $where=['AND'=>$where];
+        $UserModel=new UserModel();
+        $cols=[
+            'id',
+            'token_expiration'
+        ];
+        $user=$UserModel->read($where, $cols);
+        if ($user['token_expiration']==$tokenExpiration) {
+            $expiration=1;
+            setcookie(
+                "userId",
+                null,
+                $expiration
+            );
+            setcookie(
+                "userToken",
+                null,
+                $expiration
+            );
+        }
+        $cfg=parent::cfg();
+        $url=$cfg['siteUrl'];
+        parent::redirect($url);
     }
 }
