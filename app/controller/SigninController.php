@@ -12,7 +12,7 @@ class SigninController extends Utils
     {
         $email=$_POST['email'];
         $password=$_POST['password'];
-        $this->usingEmailAndPassword($email, $password, 'index.php');
+        $this->usingEmailAndPassword($email, $password);
     }
     public function usingEmailAndPassword($email, $password, $url='')
     {
