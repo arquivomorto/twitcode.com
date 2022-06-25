@@ -16,7 +16,7 @@ $email=[
     // java -jar fakeSMTP-2.0.jar -p 2525
     'test'=>[
         'name'=>'Twitcode',
-        'from'=>'noreply@twitcode.com',        
+        'from'=>'noreply@twitcode.com',
         'auth'=>false,
         'type'=>'smtp',
         'host'=>'localhost',
@@ -25,13 +25,14 @@ $email=[
         'password'=>'',
     ]
 ];
+$emailMerged=array_merge($email, require __DIR__.'/cfg/email.php');
 return [
     'db'=>$db,
     'dbDefault'=>'sqlite',
     'defaultLanguage'=>'en',
-    'email'=>$email,
-    'emailDefault'=>'test',
-    'languages'=>'en,pt',    
+    'email'=>$emailMerged,
+    'emailDefault'=>'oracle',
+    'languages'=>'en,pt',
     'root'=>__DIR__,
     'showErrors'=>true,
     'siteUrl'=>'http://localhost/twitcode.com'
