@@ -16,5 +16,6 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'PhpMyAdmin\\MoTranslator\\' => array($vendorDir . '/phpmyadmin/motranslator/src'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
 );

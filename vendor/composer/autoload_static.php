@@ -25,6 +25,7 @@ class ComposerStaticInit4526079440c85347d1da5f10aa7e7e49
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'PhpMyAdmin\\MoTranslator\\' => 24,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
@@ -72,6 +73,10 @@ class ComposerStaticInit4526079440c85347d1da5f10aa7e7e49
         'PhpMyAdmin\\MoTranslator\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmyadmin/motranslator/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Medoo\\' => 
         array (

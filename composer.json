@@ -6,6 +6,7 @@
 	},
 	"require": {
 		"phpmyadmin/motranslator": "^5.3",
-		"catfan/medoo": "^2.1"
+		"catfan/medoo": "^2.1",
+		"phpmailer/phpmailer": "^6.6"
 	}
 }

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5251fc89e7db8600cd85a7cd2a38ab347ede4db9',
+        'reference' => 'c20c65386498fca56d5618354bf2f5d38ee03b6e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5251fc89e7db8600cd85a7cd2a38ab347ede4db9',
+            'reference' => 'c20c65386498fca56d5618354bf2f5d38ee03b6e',
             'dev_requirement' => false,
         ),
         'catfan/medoo' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../catfan/medoo',
             'aliases' => array(),
             'reference' => '86ac2b376303f6c3c8e915be9051599b67a8a09e',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.6.3',
+            'version' => '6.6.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '9400f305a898f194caff5521f64e5dfa926626f3',
             'dev_requirement' => false,
         ),
         'phpmyadmin/motranslator' => array(

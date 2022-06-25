@@ -3,6 +3,8 @@
 namespace app\lib;
 
 use Medoo\Medoo;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Utils
 {
@@ -92,6 +94,44 @@ class Utils
         } else {
             return $out;
         }
+    }
+    public function email($body, $subject, $to, $toName, $fromName = false, $fromMail = false)
+    {
+        $cfg=$this->cfg();
+        $mailCfg=$cfg['email'][$cfg['emailDefault']];
+        $mail=new PHPMailer();
+        $mail->CharSet = 'UTF-8';
+        if ($mailCfg['type']=='smtp') {
+            $mail->IsSMTP();
+        }
+        if ($mailCfg['showErrors']) {
+            $mail->SMTPDebug=1; // 1 = errors and messages, 2 = messages only
+        } else {
+            $mail->SMTPDebug=0;
+        }
+        if ($mailCfg['auth']) {
+            $mail->SMTPAuth=true;
+            $mail->SMTPSecure=PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Username=$mailCfg['user'];
+            $mail->Password=$mailCfg['password'];
+        } else {
+            $mail->SMTPAuth=false;
+        }
+        if (!$fromName) {
+            $fromName=$mailCfg['name'];
+        }
+        if (!$fromMail) {
+            $fromMail=$mailCfg['from'];
+        }
+        $mail->Port=$mailCfg['port'];
+        $mail->Host=$mailCfg['host'];
+        $mail->SetFrom($fromMail, $fromName);
+        $mail->AddReplyTo($fromMail, "Reply");
+        $mail->Subject=$subject;
+        $mail->MsgHTML($body);
+        $address = $to;
+        $mail->AddAddress($address, $toName);
+        return $mail->Send();
     }
     public function method($raw = false)
     {
