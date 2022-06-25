@@ -3,20 +3,82 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-21 18:15-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2022-06-25 17:22-0300\n"
+"PO-Revision-Date: 2022-06-25 17:22-0300\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: /opt/home/Desktop/twitcode.com/app/view/home.php:4
-msgid "olá mundo"
-msgstr "hello world"
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:2
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:10
+msgid "Criar conta"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/form/signin.php:10
+msgid "Criar nova conta"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/form/signin.php:4
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:6
+msgid "Email"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:27
+msgid "Email inválido"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/form/signin.php:2
+#: /opt/home/Desktop/twitcode.com/app/view/form/signin.php:8
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:12
+msgid "Entrar"
+msgstr "Enter"
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:2
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:14
+msgid "Erro"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:33
+msgid "Erro desconhecido"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:4
+msgid "Nome"
+msgstr "Name"
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:24
+msgid "Nome inválido"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:21
+msgid "Página não encontrada"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/user.php:76
+msgid "Sair"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/form/signin.php:6
+#: /opt/home/Desktop/twitcode.com/app/view/form/signup.php:8
+msgid "Senha"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:30
+msgid "Senha inválida"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/error.php:41
+msgid "Voltar"
+msgstr ""
+
+#: /opt/home/Desktop/twitcode.com/app/view/user.php:63
+msgid "mensagens no último ano"
+msgstr ""
