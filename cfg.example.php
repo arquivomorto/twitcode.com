@@ -31,7 +31,7 @@ return [
     'dbDefault'=>'sqlite',
     'defaultLanguage'=>'en',
     'email'=>$emailMerged,
-    'emailDefault'=>'oracle',
+    'emailDefault'=>'test',
     'languages'=>'en,pt',
     'root'=>__DIR__,
     'showErrors'=>true,

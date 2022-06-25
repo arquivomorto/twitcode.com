@@ -31,9 +31,13 @@ class SignupController extends Utils
             $user=$UserController->create($email, $name, $password);
             if ($user) {
                 // enviar email de confirmação
-                // logar
-                $SigninController=new SigninController();
-                $SigninController->usingEmailAndPassword($email, $password);
+                if ($this->sendConfirmationCode($user)) {
+                    // logar
+                    $SigninController=new SigninController();
+                    $SigninController->usingEmailAndPassword($email, $password);
+                } else {
+                    $this->setError('smtpError');
+                }
             } else {
                 $this->setError('unknownError');
             }
@@ -43,6 +47,21 @@ class SignupController extends Utils
     {
         $this->error[]=$msgCode;
     }
+    function sendConfirmationCode($user){
+        $data=[
+            'name'=>$user['name'],
+            'code'=>$user['confirmation_code'],
+            'id'=>$user['id']
+        ];
+        $body=parent::view('email/confirmation', $data, false);
+        $cfg=parent::cfg();
+        $root=$cfg['root'];
+        require $root.'/app/lib/__.php';
+        $subject=__("Confirmação de email", false);
+        $to=$user['email'];
+        $toName=$user['name'];
+        return parent::email($body, $subject, $to, $toName);
+    }
     public function validEmail($email)
     {
         $email=mb_strtolower(trim($email));
@@ -51,7 +70,18 @@ class SignupController extends Utils
             'email'=>$email
         ];
         $emailExists=$UserModel->read($where);
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) and !$emailExists) {
+        $min=6;
+        $max=64;
+        $len=mb_strlen($email);
+        $sizeOk=true;
+        if ($len<$min or $len>$max) {
+            $sizeOk=false;
+        }
+        if (
+            filter_var($email, FILTER_VALIDATE_EMAIL) and
+            !$emailExists and
+            $sizeOk
+        ) {
             return $email;
         } else {
             $this->setError('invalidEmail');
@@ -64,12 +94,19 @@ class SignupController extends Utils
         $arr=array_map('trim', $arr);
         $arr=array_values($arr);
         $validName=implode(' ', $arr);
+        // apenas caracteres imprimíveis
         foreach ($arr as $key=>$value) {
             if (!ctype_graph($value)) {
                 $this->setError('invalidName');
                 $validName=false;
                 break;
             }
+        }
+        $min=2;
+        $max=32;
+        $len=mb_strlen($validName);
+        if ($len<$min or $len>$max) {
+            $validName=false;
         }
         return $validName;
     }

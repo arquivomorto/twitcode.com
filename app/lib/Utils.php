@@ -178,6 +178,7 @@ class Utils
         $filename=$root.'/app/view/'.$name.'.php';
         $asset=array($this, 'asset');
         $e=array($this, 'e');
+        $siteUrl=$cfg['siteUrl'];
         $view=array($this, 'view');
         if (file_exists($filename)) {
             $data['data']=$data;
