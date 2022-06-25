@@ -2,4 +2,5 @@
 /cfg
 /cfg.php
 /db
+/locale/*/LC_MESSAGES/*.mo
 /test.php
