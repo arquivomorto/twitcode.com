@@ -18,14 +18,15 @@ button {
 
 a:hover,
 a:link,
+a:visited,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-	/* https://contrastchecker.com/?c=0033cc&b=ffffff */
-	color: #0033cc;
+	/* https://contrastchecker.com/?c=0000ff&b=ffffff */
+	color: blue;
 }
 
 h1 {
@@ -77,6 +78,7 @@ label {
 
 	a:hover,
 	a:link,
+	a:visited,
 	h1,
 	h2,
 	h3,
@@ -91,6 +93,12 @@ label {
 		/* https://contrastchecker.com/?c=ffffff&b=000000 */
 		background: #000000;
 		color: #ffffff;
+	}
+
+	dialog{
+		background:black;
+		border:1px solid cyan;
+		color:white;
 	}
 
 	small {
