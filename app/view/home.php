@@ -3,7 +3,7 @@
 $view('inc/header', $data);
 ?>
 <div class="container">
-    <div class="row">
+    <div class="row desktop">
         <div class="col12">
             <br><br><br>
         </div>
